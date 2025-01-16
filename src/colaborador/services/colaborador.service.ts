@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ILike, Repository } from 'typeorm';
+import { DeleteResult, ILike, Repository } from 'typeorm';
 import { Colaborador } from '../entities/colaborador.entity';
 
 @Injectable()
@@ -48,5 +48,11 @@ async update(colaborador: Colaborador): Promise<Colaborador> {
     
    await this.findById(colaborador.id)
    return await this.colaboradorRepository.save(colaborador);
+}
+
+async delete(id: number): Promise<DeleteResult>{
+  await this.findById(id)
+
+  return await this.colaboradorRepository.delete(id)
 }
 }

@@ -45,4 +45,10 @@ export class ColaboradorController {
   update(@Body() colaborador: Colaborador): Promise<Colaborador> {
     return this.colaboradorService.update(colaborador);
   }
+
+  @Delete(':id')
+    @HttpCode(HttpStatus.NO_CONTENT)
+    delete(@Param('id', ParseIntPipe) id: number){
+        return this.colaboradorService.delete(id);
+    }
 }
