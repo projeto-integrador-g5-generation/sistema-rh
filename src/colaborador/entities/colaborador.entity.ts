@@ -1,5 +1,5 @@
 import { Transform, TransformFnParams } from 'class-transformer';
-import { IsDate, IsEmail, IsNotEmpty, IsNumber, Min } from 'class-validator';
+import { IsDate, IsDateString, IsEmail, IsNotEmpty, IsNumber, Min } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'tb_colaborador' })
@@ -20,9 +20,9 @@ export class Colaborador {
 
   @Transform(({ value }: TransformFnParams) => value?.toLowerCase().trim())
   @IsNotEmpty()
-  @IsDate()
+  @IsDateString()
   @Column({ type: 'date', nullable: false })
-  data_admissao: Date;
+  data_admissao: Date;
 
   @Transform(({ value }: TransformFnParams) => value?.toLowerCase().trim())
   @IsNotEmpty()

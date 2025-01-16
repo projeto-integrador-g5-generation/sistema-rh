@@ -37,4 +37,16 @@ export class ColaboradorService {
       },
     });
   }
+
+  async create(colaborador: Colaborador): Promise<Colaborador> {
+       
+
+    return await this.colaboradorRepository.save(colaborador);
+}
+
+async update(colaborador: Colaborador): Promise<Colaborador> {
+    
+   await this.findById(colaborador.id)
+   return await this.colaboradorRepository.save(colaborador);
+}
 }

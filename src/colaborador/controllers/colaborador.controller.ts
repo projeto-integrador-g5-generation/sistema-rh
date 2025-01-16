@@ -33,4 +33,16 @@ export class ColaboradorController {
   findByNome(@Param('nome') nome: string): Promise<Colaborador[]> {
     return this.colaboradorService.findByNome(nome);
   }
+
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  create(@Body() colaborador: Colaborador): Promise<Colaborador> {
+    return this.colaboradorService.create(colaborador);
+  }
+
+  @Put()
+  @HttpCode(HttpStatus.OK)
+  update(@Body() colaborador: Colaborador): Promise<Colaborador> {
+    return this.colaboradorService.update(colaborador);
+  }
 }
